@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abhiroop</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0a192f;
+      --accent: #64ffda;
+      --bg: #f8fafd;
+      --text: #222;
+      --card-bg: #fff;
+      --shadow: 0 4px 24px rgba(10,25,47,0.08);
+    }
+
+    /* Base styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+
+    /* Header */
+    header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .profile-pic {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .skill-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    /* Text Analysis Tool */
+    .text-analysis {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+
+    #textInput {
+      width: 100%;
+      height: 200px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border: 2px solid var(--accent);
+    }
+  </style>
+
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <img src="assets/profile.jpg" alt="Profile" class="profile-pic">
+      <h1>Abhiroop</h1>
+      <p>Tech Specialist & Creative Developer</p>
+      <div class="socials">
+        <a href="https://github.com/Abhiro0p"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </header>
+<section id="cv">
+  <div class="container cv-container" style="text-align:center; margin-top:2rem;">
+    <h2>Download My CV</h2>
+    <a href="assets/cv.pdf" class="cv-btn" download>
+      <i class="fas fa-file-pdf"></i> Download CV (PDF)
+    </a>
+    <br><br>
+
+  </div>
+</section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="photos">
+          <img src="assets/photo1.jpg" alt="Work">
+          <img src="assets/photo2.jpg" alt="Project">
+        </div>
+        <p>Hey there! I’m Abhiroop, a web developer with 2 years of experience in building dynamic, responsive, and user-friendly websites. I specialize in both front-end and back-end development, crafting seamless digital experiences using modern technologies like HTML, CSS, JavaScript, React, Node.js, and more.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="container">
+      <h2>Technical Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <i class="fab fa-js"></i>
+          <span>JavaScript</span>
+        </div>
+                <div class="skill-card">
+          <i class="fab fa-html5"></i>
+          <span>HTML</span>
+        </div>
+        <div class="skill-card">
+          <i class="fab fa-css3-alt"></i>
+          <span>CSS</span>
+        </div>
+         <div class="skill-card">
+          <i class="fa-solid fa-c"></i>
+          <span>C</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-brands fa-python"></i>
+          <span>Python</span>
+        </div>
+        <div class="skill-card">
+          <i class="fa-solid fa-hashtag"></i>
+          <span>C#</span>
+        <!-- Add more skills -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Text Analysis Tool -->
+  <section class="text-analysis">
+    <div class="container">
+      <h2>Text Analysis Tool</h2>
+      <textarea id="textInput" placeholder="Paste your text here..."></textarea>
+      <div id="analysisResults"></div>
+    </div>
+  </section>
+
+  <!-- Tracking Script -->
+  <script>
+    // User activity tracking
+    window.userActivity = {
+      clicks: [],
+      views: []
+    };
+
+    document.addEventListener('click', e => {
+      userActivity.clicks.push({
+        element: e.target.tagName,
+        time: new Date().toISOString()
+      });
+    });
+
+    window.addEventListener('load', () => {
+      userActivity.views.push({
+        page: location.href,
+        time: new Date().toISOString()
+      });
+    });
+  </script>
+
+  <!-- Text Analysis Script -->
+  <script>
+    document.getElementById('textInput').addEventListener('input', function() {
+      const text = this.value;
+      const results = document.getElementById('analysisResults');
+      
+      // Analysis functions
+      const wordCount = text.trim().split(/\s+/).length;
+      const charCount = text.length;
+      
+      results.innerHTML = `
+        <div class="stats">
+          <p>Words: ${wordCount} | Characters: ${charCount}</p>
+        </div>
+      `;
+    });
+  </script>
+    <script>
+        // User activity tracking
+        document.addEventListener('DOMContentLoaded', () => {
+            // Track initial page view
+            logActivity('view', 'page', {
+                url: window.location.href,
+                referrer: document.referrer
+            });
+
+            // Track all clicks
+            document.addEventListener('click', (e) => {
+                const target = e.target;
+                const elementType = getElementType(target);
+                logActivity('click', elementType, {
+                    id: target.id,
+                    class: target.className,
+                    tag: target.tagName
+                });
+            });
+
+            // Track history changes
+            const originalPushState = history.pushState;
+            history.pushState = function() {
+                originalPushState.apply(this, arguments);
+                logActivity('view', 'page', {
+                    url: window.location.href,
+                    type: 'history'
+                });
+            };
+        });
+
+        function getElementType(element) {
+            if (element.tagName === 'IMG') return 'image';
+            if (element.tagName === 'A') return 'hyperlink';
+            if (element.tagName === 'BUTTON') return 'button';
+            if (element.type === 'select-one') return 'dropdown';
+            return element.tagName.toLowerCase();
+        }
+
+        function logActivity(type, elementType, details) {
+            const timestamp = new Date().toISOString();
+            console.log(`${timestamp}, ${type}, ${elementType}, ${JSON.stringify(details)}`);
+        }
+    </script>
+</body>
+</html>
